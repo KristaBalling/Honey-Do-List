@@ -33,8 +33,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //logic goes here
-            }
+                if (enterMessage.getText().toString().equals("")) {
+
+                String message = enterMessage.getText().toString();
+                writeToFile(message);
+
+            }else {
+                    //do nothing for now
+                }
+
+             }
         });
+
+        try {
+            if (readFromFile() != null) {
+
+                enterMessage.setText(readFromFile());
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
